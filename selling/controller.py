@@ -15,5 +15,6 @@ def get_all_quotes_names():
 
 @selling_routes.route('/quote')
 def get_all_quotes():
-    filtered_quotes = repository.get_filtered_quotes(request.args.get('quoteId'))
+    quote_id = request.args.get('quoteId')
+    filtered_quotes = repository.get_filtered_quotes(quote_id)
     return jsonify(serializer.convert_quotes_to_dict(filtered_quotes))
