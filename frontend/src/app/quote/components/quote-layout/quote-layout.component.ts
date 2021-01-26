@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core'
+import {QuoteService} from 'src/app/quote/services/quote.service'
+import {QuoteInterface} from 'src/app/quote/types/quote.interface'
 
 @Component({
   selector: 'app-quote-layout',
@@ -6,7 +8,13 @@ import {Component, OnInit} from '@angular/core'
   styleUrls: ['./quote-layout.component.scss'],
 })
 export class QuoteLayoutComponent implements OnInit {
-  constructor() {}
+  public quotes: QuoteInterface[] = []
 
-  ngOnInit(): void {}
+  constructor(private quoteService: QuoteService) {}
+
+  ngOnInit(): void {
+    this.quoteService.fetch().subscribe((data: QuoteInterface[]) => {
+      this.quotes = data
+    })
+  }
 }

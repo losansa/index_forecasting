@@ -1,1 +1,32 @@
-<p>quote-layout works!</p>
+
+<div class='p-shadow-6'>
+  <p-table
+    [value]='quotes'
+    [paginator]='true'
+    [rows]='10'
+    [showCurrentPageReport]='true'
+  >
+    <ng-template pTemplate='header'>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Quantity</th>
+        <th>Quantity</th>
+        <th>Quantity</th>
+        <th>Quantity</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate='body' let-product>
+      <tr>
+        <td>{{product.adjClose}}</td>
+        <td>{{product.close}}</td>
+        <td>{{product.dateTime}}</td>
+        <td>{{product.high}}</td>
+        <td>{{product.low}}</td>
+        <td>{{product.open}}</td>
+        <td>{{product.volume}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

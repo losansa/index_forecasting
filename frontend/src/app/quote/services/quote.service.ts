@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 import {Observable} from 'rxjs'
-import {QuoteInterface} from 'src/app/shared/types/quote.interface'
+import {QuoteInterface} from 'src/app/quote/types/quote.interface'
 
 @Injectable({
   providedIn: 'root',
