@@ -3,7 +3,7 @@ import {SharedModule} from 'src/app/shared/modules/shared.module'
 import {QuoteLayoutComponent} from './components/quote-layout/quote-layout.component'
 import {RouterModule, Routes} from '@angular/router'
 
-const routes: Routes = [{path: 'quote', component: QuoteLayoutComponent}]
+const routes: Routes = [{path: '', component: QuoteLayoutComponent}]
 
 @NgModule({
   declarations: [QuoteLayoutComponent],
