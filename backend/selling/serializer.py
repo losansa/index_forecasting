@@ -10,19 +10,11 @@ def convert_quote_name_to_dict(quote_name: QuotesName):
         'id': quote_name.id,
         'name': quote_name.name
     }
-    # dictionary['quotes'] = convert_quotes_to_dict(quote_name.quotes)
-    # return dictionary
 
 
 def convert_quotes_to_dict(quotes):
     return list(map(convert_quote_to_dict, quotes))
 
-
-# def convert_quotes_to_dict(quotes):
-#     arr = []
-#     for quote in quotes:
-#         arr.append(convert_quote_to_dict(quote))
-#     return arr
 
 def convert_quote_to_dict(quote: Quote):
     return {
