@@ -4,10 +4,10 @@ import {QuoteInterface} from 'src/app/quote/types/quote.interface'
 
 @Component({
   selector: 'app-quote-layout',
-  templateUrl: './quote-layout.component.html',
-  styleUrls: ['./quote-layout.component.scss'],
+  templateUrl: './quote-table.component.html',
+  styleUrls: ['./quote-table.component.scss'],
 })
-export class QuoteLayoutComponent implements OnInit {
+export class QuoteTableComponent implements OnInit {
   public quotes: QuoteInterface[] = []
 
   constructor(private quoteService: QuoteService) {}

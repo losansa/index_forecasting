@@ -1,5 +1,10 @@
-::ng-deep {
+:host ::ng-deep {
     .p-tabmenu .p-tabmenu-nav {
         border: none;
+    }
+
+    .p-menubar {
+        height: 64px;
+        margin-bottom: 20px;
     }
 }
