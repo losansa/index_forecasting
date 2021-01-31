@@ -5,3 +5,5 @@ matplotlib
 psycopg2
 flask_script
 flask_migrate
+torch
+sklearn

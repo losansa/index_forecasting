@@ -10,3 +10,5 @@ db = SQLAlchemy(app)
 
 from selling.controller import selling_routes
 app.register_blueprint(selling_routes)
+
+# from backend.selling import lstm

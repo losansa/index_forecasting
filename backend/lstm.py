@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from backend.selling.repository import get_quote_closes_values
+from selling.repository import get_quote_closes_values
 
 quote_close_values = get_quote_closes_values()
 print(quote_close_values)
