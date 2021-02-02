@@ -11,6 +11,6 @@ export interface QuoteInterface {
 }
 
 export interface QuoteChartInterface {
-  x: Date
+  x: number
   y: number[]
 }

@@ -19,11 +19,21 @@ export class QuoteChartComponent implements OnInit {
   ngOnInit(): void {
     this.quoteService.fetch().subscribe((data: QuoteInterface[]) => {
       this.quotes = data
-      this.chart.renderChart('#candlestick')
 
-      const sliceQuotes = this.quotes.splice(0, 100)
-
-      this.chart.updateChart(sliceQuotes)
+      this.updateCandlestick()
+      this.updateColumn()
     })
+  }
+
+  updateCandlestick(): void {
+    const sliceQuotes = this.quotes.slice(240, 310)
+    this.chart.renderCandlestickChart('#candlestick')
+    this.chart.updateCandlestickChart(sliceQuotes)
+  }
+
+  updateColumn(): void {
+    const sliceQuotes = this.quotes.slice(240, 310)
+    this.chart.renderColumnChart('#column')
+    this.chart.updateColumnChart(sliceQuotes)
   }
 }

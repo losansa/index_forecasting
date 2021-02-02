@@ -10,10 +10,57 @@ declare let ApexCharts: any
   providedIn: 'root',
 })
 export class ChartService {
-  private chart: any
+  private candlestickChart: any
+  private columnChart: any
 
-  renderChart(selector: string): void {
-    this.chart = new ApexCharts(document.querySelector(selector), {
+  renderColumnChart(selector: string): void {
+    this.columnChart = new ApexCharts(document.querySelector(selector), {
+      series: [
+        {
+          name: 'Net Profit',
+          data: [],
+        },
+      ],
+      chart: {
+        type: 'bar',
+        height: 350,
+        brush: {
+          enabled: true,
+          target: 'candles',
+        },
+      },
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: '55%',
+          endingShape: 'rounded',
+        },
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent'],
+      },
+      xaxis: {
+        categories: [],
+      },
+      yaxis: {
+        title: {
+          text: '$ (thousands)',
+        },
+      },
+      fill: {
+        opacity: 1,
+      },
+    })
+    this.columnChart.render()
+  }
+
+  renderCandlestickChart(selector: string): void {
+    this.candlestickChart = new ApexCharts(document.querySelector(selector), {
       series: [
         {
           data: [],
@@ -22,6 +69,7 @@ export class ChartService {
       chart: {
         type: 'candlestick',
         height: 350,
+        id: 'candles',
       },
       title: {
         text: 'Квоты',
@@ -36,23 +84,44 @@ export class ChartService {
         },
       },
     })
-    this.chart.render()
+    this.candlestickChart.render()
   }
 
-  updateChart(list: QuoteInterface[]): void {
-    this.chart.updateOptions({
+  updateColumnChart(list: QuoteInterface[]): void {
+    this.columnChart.updateOptions({
       series: [
         {
-          data: this.getChartData(list),
+          data: this.getColumnChartData(list),
         },
       ],
     })
   }
 
-  private getChartData(quotes: QuoteInterface[]): QuoteChartInterface[] {
+  updateCandlestickChart(list: QuoteInterface[]): void {
+    this.candlestickChart.updateOptions({
+      series: [
+        {
+          data: this.getCandlestickChartData(list),
+        },
+      ],
+    })
+  }
+
+  private getColumnChartData(quotes: QuoteInterface[]): any[] {
     return quotes.map((quote) => {
       return {
-        x: new Date(quote.dateTime),
+        x: new Date(quote.dateTime).getTime(),
+        y: quote.volume,
+      }
+    })
+  }
+
+  private getCandlestickChartData(
+    quotes: QuoteInterface[]
+  ): QuoteChartInterface[] {
+    return quotes.map((quote) => {
+      return {
+        x: new Date(quote.dateTime).getTime(),
         y: [quote.open, quote.high, quote.low, quote.close],
       }
     })
