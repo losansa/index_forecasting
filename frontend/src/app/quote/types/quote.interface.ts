@@ -9,3 +9,8 @@ export interface QuoteInterface {
   quoteNameId: number // Ссылка на дропдаун
   volume: number // Объем просто
 }
+
+export interface QuoteChartInterface {
+  x: Date
+  y: number[]
+}
