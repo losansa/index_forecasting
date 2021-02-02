@@ -18,6 +18,12 @@ def convert_quotes_to_dict(quotes):
 
 def convert_quote_to_dict(quote: Quote):
     return {
+        'dateTime': str(quote.date_time),
+        'close': quote.q_close,
+    }
+
+def convert_quote_to_dict1(quote: Quote):
+    return {
         'id': quote.id,
         'quoteNameId': quote.q_name_id,
         'dateTime': quote.date_time,

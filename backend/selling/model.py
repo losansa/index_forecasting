@@ -3,12 +3,14 @@ from backend.app import db
 
 class QuotesName(db.Model):
     __tablename__ = 'quotes_name'
+    __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
 
 
 class Quote(db.Model):
     __tablename__ = 'quote'
+    __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
     date_time = db.Column(db.String(80), nullable=False)
     q_open = db.Column(db.Float)
