@@ -9,20 +9,26 @@
   >
     <ng-template pTemplate='header'>
       <tr>
-        <th>Цена последней закрытой сделки</th>
-        <th>Цена закрытия</th>
-        <th>Дата(время) обновления</th>
-        <th>Самая высокая цена</th>
-        <th>Самая низкая цена</th>
-        <th>Цена открытия</th>
-        <th>Объем просто</th>
+        <th pSortableColumn="adjClose">Цена последней закрытой сделки <p-sortIcon field="adjClose"></p-sortIcon></th>
+        <th pSortableColumn="close">Цена закрытия <p-sortIcon field="close"></p-sortIcon></th>
+        <th pSortableColumn="dateTime">
+          <div class="p-d-flex p-jc-between p-ai-center">
+            Дата обновления
+            <p-columnFilter type="date" field="dateTime" display="menu"></p-columnFilter>
+            <p-sortIcon field="dateTime"></p-sortIcon>
+          </div>
+        </th>
+        <th pSortableColumn="high">Самая высокая цена <p-sortIcon field="high"></p-sortIcon></th>
+        <th pSortableColumn="low">Самая низкая цена <p-sortIcon field="low"></p-sortIcon></th>
+        <th pSortableColumn="open">Цена открытия <p-sortIcon field="open"></p-sortIcon></th>
+        <th pSortableColumn="volume">Объем <p-sortIcon field="volume"></p-sortIcon></th>
       </tr>
     </ng-template>
     <ng-template pTemplate='body' let-product>
       <tr>
         <td>{{product.adjClose}}</td>
         <td>{{product.close}}</td>
-        <td>{{product.dateTime}}</td>
+        <td>{{product.dateTime | date: 'HH.mm, dd.MM.yyyy'}}</td>
         <td>{{product.high}}</td>
         <td>{{product.low}}</td>
         <td>{{product.open}}</td>
